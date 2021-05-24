@@ -15,6 +15,7 @@ public class CanvasEventListener extends MouseAdapter implements MouseMotionList
     Method method;
     CanvasPanel canvasPanel;
     public static ToolType type;
+
     public CanvasEventListener(CanvasPanel canvasPanel) {
         this.canvasPanel = canvasPanel;
         method = new Method(canvasPanel);
@@ -24,16 +25,18 @@ public class CanvasEventListener extends MouseAdapter implements MouseMotionList
     public void mousePressed(MouseEvent e) {
         run(e);
     }
+
     @Override
     public void mouseDragged(MouseEvent e) {
         run(e);
     }
-    public void run(MouseEvent e){
-        if(type == ToolType.PAINT){
-            method.setPixel(new Point(e.getX(),e.getY()));
-        }else if(type == ToolType.ERASER){
-            method.removePixel(new Point(e.getX(),e.getY()));
-        }else if(type == ToolType.COLOR_PICKER){
+
+    public void run(MouseEvent e) {
+        if (type == ToolType.PAINT) {
+            method.setPixel(new Point(e.getX(), e.getY()));
+        } else if (type == ToolType.ERASER) {
+            method.removePixel(new Point(e.getX(), e.getY()));
+        } else if (type == ToolType.COLOR_PICKER) {
             method.setColor(new Point(e.getX(), e.getY()), canvasPanel.getCanvas());
         }
     }

@@ -1,6 +1,7 @@
 package Method;
 
 import GUI.CanvasPanels.CanvasPanel;
+import GUI.ToolPanels.ColorPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,33 +10,47 @@ import java.util.ArrayList;
 
 public class Variables {
 
-    public static class global{
-        static BufferedImage colorWheel;
-        static Color color;
-        static int brushRadius;
-    }
+
+    static ArrayList<JButton> toolButtons;
+    static BufferedImage colorWheel;
+    static Color color;
+    static int brushRadius;
 
     CanvasPanel canvasPanel;
 
-    public Variables(CanvasPanel cp){
+    public Variables(){
+        toolButtons = new ArrayList<>();
+    }
+    public Variables(CanvasPanel cp) {
         canvasPanel = cp;
-        global.color = Color.BLACK;
-        global.brushRadius = 5;
+        color = Color.BLACK;
+        brushRadius = 5;
     }
 
-    public void setColor(Point pos){
+    public static void addToolButtons(JButton b) {
+        toolButtons.add(b);
+    }
+
+    public ArrayList<JButton> getToolButtons(){
+        return toolButtons;
+    }
+
+    public void setColor(Point pos) {
         System.out.println("1");
-        global.color = new Color(global.colorWheel.getRGB((int)pos.getX(), (int) pos.getY()));
+        color = new Color(colorWheel.getRGB((int) pos.getX(), (int) pos.getY()));
     }
-    public void setColor(Point pos, BufferedImage img){
+
+    public void setColor(Point pos, BufferedImage img) {
         System.out.println("2");
-        System.out.println(img.getRGB((int)pos.getX(), (int) pos.getY()));
-        global.color = new Color(img.getRGB((int)pos.getX(), (int) pos.getY()));
+        System.out.println(img.getRGB((int) pos.getX(), (int) pos.getY()));
+        color = new Color(img.getRGB((int) pos.getX(), (int) pos.getY()));
     }
-    public void setColor(Color col){
-        global.color = col;
+
+    public void setColor(Color col) {
+        color = col;
     }
-    public void setBrushRadius(int rad){
-        global.brushRadius = rad;
+
+    public void setBrushRadius(int rad) {
+        brushRadius = rad;
     }
 }

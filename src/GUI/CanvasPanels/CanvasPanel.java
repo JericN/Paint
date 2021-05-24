@@ -24,15 +24,16 @@ public class CanvasPanel extends JPanel {
         colArr = new ArrayList<>();
         Graphics2D g2D = canvas.createGraphics();
         g2D.setColor(Color.WHITE);
-        g2D.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
+        g2D.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
-    public BufferedImage getCanvas(){
+
+    public BufferedImage getCanvas() {
         return canvas;
     }
 
     public void setCanvasData(Point pos, Color col, int rad) {
         Graphics2D g2D = canvas.createGraphics();
-        g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+        g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2D.setColor(col);
         Shape theCircle = new Ellipse2D.Double(pos.x - rad, pos.y - rad, 2.0 * rad, 2.0 * rad);
         g2D.fill(theCircle);

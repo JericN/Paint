@@ -13,15 +13,17 @@ import java.awt.event.FocusListener;
 public class BrushSizeListener extends DocumentFilter implements FocusListener {
     Method method;
     JTextField textField;
+
     public BrushSizeListener(CanvasPanel canvasPanel, JTextField textField) {
         method = new Method(canvasPanel);
-        this.textField  = textField;
+        this.textField = textField;
     }
+
     public void replace(FilterBypass fb, int offset, int length, String str, AttributeSet a) throws BadLocationException {
         String text = fb.getDocument().getText(0, fb.getDocument().getLength());
         text += str;
-        System.out.printf("%d, %d, %s",offset,length,str);
-        if(offset==0 && str.equals("0")){
+        System.out.printf("%d, %d, %s", offset, length, str);
+        if (offset == 0 && str.equals("0")) {
             return;
         }
         if ((fb.getDocument().getLength() + str.length() - length) <= 2 && text.matches("[0-9]+")) {
@@ -29,11 +31,12 @@ public class BrushSizeListener extends DocumentFilter implements FocusListener {
         }
         method.setBrushRadius(Integer.parseInt(textField.getText()));
     }
-    public void remove(FilterBypass fb, int offset, int length) throws BadLocationException{
-        if(fb.getDocument().getLength() - length==0){
+
+    public void remove(FilterBypass fb, int offset, int length) throws BadLocationException {
+        if (fb.getDocument().getLength() - length == 0) {
             method.setBrushRadius(1);
         }
-        super.remove(fb,offset,length);
+        super.remove(fb, offset, length);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class BrushSizeListener extends DocumentFilter implements FocusListener {
 
     @Override
     public void focusLost(FocusEvent e) {
-        if(textField.getText().equals("")){
+        if (textField.getText().equals("")) {
             textField.setText("1");
         }
         method.setBrushRadius(Integer.parseInt(textField.getText()));
