@@ -2,18 +2,15 @@ package GUI;
 import GUI.CanvasPanels.*;
 import GUI.ToolPanels.*;
 
-import EventListener.MouseEventListener;
-import Method.ToolMethod;
+import Method.Method;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 
 public class MyFrame{
     JFrame frame;
     CanvasPanel canvasPanel;
-    CanvasPanel canvasPanelB;
     JPanel toolPanel;
-    ToolMethod method;
-    ToolMethod methodB;
+    Method method;
     public MyFrame(){
         setMainFrame();
     }
@@ -32,11 +29,9 @@ public class MyFrame{
     }
     public void setCanvasPanel(){
         canvasPanel = new CanvasPanel();
-        method = new ToolMethod(canvasPanel);
+        method = new Method(canvasPanel);
         frame.add(canvasPanel);
-        canvasPanelB = new CanvasPanel();
-        methodB = new ToolMethod(canvasPanelB);
-        frame.add(canvasPanelB);
+
     }
     public void setToolPanel() {
         toolPanel = new ToolPanel(canvasPanel);

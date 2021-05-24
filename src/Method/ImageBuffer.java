@@ -1,7 +1,7 @@
 package Method;
 
 import GUI.CanvasPanels.CanvasPanel;
-import GUI.ToolPanels.ColorChangerPanel;
+import GUI.ToolPanels.ColorPanel;
 
 import javax.imageio.ImageIO;
 import java.awt.geom.AffineTransform;
@@ -28,6 +28,6 @@ public class ImageBuffer extends Variables{
         AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
         assert in != null;
         global.colorWheel = scaleOp.filter(in, global.colorWheel);
-        ColorChangerPanel.img = global.colorWheel;
+        ColorPanel.img = global.colorWheel;
     }
 }

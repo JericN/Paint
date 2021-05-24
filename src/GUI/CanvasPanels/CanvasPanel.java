@@ -1,7 +1,6 @@
 package GUI.CanvasPanels;
 
-import EventListener.DocumentFilterListener;
-import EventListener.MouseEventListener;
+import EventListener.CanvasEventListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,33 +11,29 @@ import java.util.ArrayList;
 public class CanvasPanel extends JPanel {
     ArrayList<Point> posArr;
     ArrayList<Color> colArr;
-    int brushSize;
     BufferedImage canvas;
 
     public CanvasPanel() {
-        canvas = new BufferedImage(600, 900, BufferedImage.TYPE_INT_ARGB);
-
-        this.setPreferredSize(new Dimension(600, 900));
+        canvas = new BufferedImage(1200, 900, BufferedImage.TYPE_INT_ARGB);
+        this.setFocusable(true);
+        this.setPreferredSize(new Dimension(1200, 900));
         this.setBackground(Color.WHITE);
-        this.addMouseListener(new MouseEventListener(this));
-        this.addMouseMotionListener(new MouseEventListener(this));
+        this.addMouseListener(new CanvasEventListener(this));
+        this.addMouseMotionListener(new CanvasEventListener(this));
         posArr = new ArrayList<>();
         colArr = new ArrayList<>();
-        brushSize = 5;
     }
 
-    public void setCanvasData(Point pos, Color col) {
+    public void setCanvasData(Point pos, Color col, int rad) {
         Graphics2D g2D = canvas.createGraphics();
         g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
         g2D.setColor(col);
-        Shape theCircle = new Ellipse2D.Double(pos.x - brushSize, pos.y - brushSize, 2.0 * brushSize, 2.0 * brushSize);
+        Shape theCircle = new Ellipse2D.Double(pos.x - rad, pos.y - rad, 2.0 * rad, 2.0 * rad);
         g2D.fill(theCircle);
+        this.grabFocus();
         this.repaint();
     }
 
-    public void setBrushSize(int size) {
-        brushSize = size;
-    }
 
     public void paint(Graphics g) {
         super.paintComponent(g);

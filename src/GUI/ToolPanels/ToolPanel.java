@@ -21,8 +21,9 @@ public class ToolPanel extends JPanel {
         initializeTools();
     }
     public void initializeTools(){
-        this.add(new ColorChangerPanel(canvasPanel),"wrap");
-        this.add(new BrushChangerPanel(canvasPanel),"wrap");
+        this.add(new ColorPanel(canvasPanel),"wrap");
+        this.add(new BrushPanel(canvasPanel),"wrap");
+        this.add(new EraserButton(canvasPanel),"wrap");
     }
 
 }
