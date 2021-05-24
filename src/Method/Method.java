@@ -14,5 +14,9 @@ public class Method extends ImageBuffer{
         canvasPanel.setCanvasData(pos, global.color, global.brushRadius);
     }
 
+    public void removePixel(Point pos){
+        canvasPanel.setCanvasData(pos, Color.WHITE, global.brushRadius);
+    }
+
 
 }

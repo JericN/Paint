@@ -2,7 +2,9 @@ package EventListener;
 
 import GUI.CanvasPanels.CanvasPanel;
 import Method.Method;
+import Enum.ToolType;
 
+import javax.tools.Tool;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -11,16 +13,28 @@ import java.awt.event.MouseMotionListener;
 
 public class CanvasEventListener extends MouseAdapter implements MouseMotionListener, MouseListener {
     Method method;
+    CanvasPanel canvasPanel;
+    public static ToolType type;
     public CanvasEventListener(CanvasPanel canvasPanel) {
+        this.canvasPanel = canvasPanel;
         method = new Method(canvasPanel);
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        method.setPixel(new Point(e.getX(),e.getY()));
+        run(e);
     }
     @Override
     public void mouseDragged(MouseEvent e) {
-        method.setPixel(new Point(e.getX(),e.getY()));
+        run(e);
+    }
+    public void run(MouseEvent e){
+        if(type == ToolType.PAINT){
+            method.setPixel(new Point(e.getX(),e.getY()));
+        }else if(type == ToolType.ERASER){
+            method.removePixel(new Point(e.getX(),e.getY()));
+        }else if(type == ToolType.COLOR_PICKER){
+            method.setColor(new Point(e.getX(), e.getY()), canvasPanel.getCanvas());
+        }
     }
 }

@@ -22,6 +22,12 @@ public class CanvasPanel extends JPanel {
         this.addMouseMotionListener(new CanvasEventListener(this));
         posArr = new ArrayList<>();
         colArr = new ArrayList<>();
+        Graphics2D g2D = canvas.createGraphics();
+        g2D.setColor(Color.WHITE);
+        g2D.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
+    }
+    public BufferedImage getCanvas(){
+        return canvas;
     }
 
     public void setCanvasData(Point pos, Color col, int rad) {
@@ -39,5 +45,6 @@ public class CanvasPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         g2D.drawImage(canvas, 0, 0, null);
+        g2D.dispose();
     }
 }
