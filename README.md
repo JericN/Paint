@@ -1,2 +1,2 @@
 # Paint
- Recreation of Microsoft Paint
+Clone of Microsoft Paint
