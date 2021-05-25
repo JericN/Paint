@@ -1,7 +1,7 @@
-package GUI.ToolPanels;
+package GUI.MainPanels;
 
+import GUI.ToolPanels.*;
 import Method.*;
-import GUI.CanvasPanels.CanvasPanel;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 
@@ -29,6 +29,7 @@ public class ToolPanel extends JPanel {
         this.add(new PaintButton(canvasPanel), "wrap, w 100!,center");
         this.add(new EraserButton(canvasPanel), "wrap, w 100!,center");
         this.add(new ColorPickerButton(canvasPanel), "wrap, w 100!,center");
+        this.add(new FillButton(canvasPanel), "wrap, w 100!,center");
     }
 
 }

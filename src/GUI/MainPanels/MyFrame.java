@@ -1,7 +1,4 @@
-package GUI;
-
-import GUI.CanvasPanels.*;
-import GUI.ToolPanels.*;
+package GUI.MainPanels;
 
 import Method.Method;
 import net.miginfocom.swing.MigLayout;

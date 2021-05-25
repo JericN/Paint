@@ -1,7 +1,7 @@
 package GUI.ToolPanels;
 
 import EventListener.ColorWheelEventListener;
-import GUI.CanvasPanels.CanvasPanel;
+import GUI.MainPanels.CanvasPanel;
 
 import javax.swing.*;
 import java.awt.*;

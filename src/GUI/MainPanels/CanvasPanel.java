@@ -1,4 +1,4 @@
-package GUI.CanvasPanels;
+package GUI.MainPanels;
 
 import EventListener.CanvasEventListener;
 
@@ -33,10 +33,14 @@ public class CanvasPanel extends JPanel {
 
     public void setCanvasData(Point pos, Color col, int rad) {
         Graphics2D g2D = canvas.createGraphics();
-        g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2D.setColor(col);
         Shape theCircle = new Ellipse2D.Double(pos.x - rad, pos.y - rad, 2.0 * rad, 2.0 * rad);
         g2D.fill(theCircle);
+        this.grabFocus();
+        this.repaint();
+    }
+    public void setCanvasData(BufferedImage canvas){
+        this.canvas = canvas;
         this.grabFocus();
         this.repaint();
     }

@@ -1,10 +1,9 @@
 package EventListener;
 
-import GUI.CanvasPanels.CanvasPanel;
+import GUI.MainPanels.CanvasPanel;
 import Method.Method;
 import Enum.ToolType;
 
-import javax.tools.Tool;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -38,6 +37,8 @@ public class CanvasEventListener extends MouseAdapter implements MouseMotionList
             method.removePixel(new Point(e.getX(), e.getY()));
         } else if (type == ToolType.COLOR_PICKER) {
             method.setColor(new Point(e.getX(), e.getY()), canvasPanel.getCanvas());
+        }else if (type == ToolType.FILL) {
+            method.fillArea(new Point(e.getX(), e.getY()), canvasPanel.getCanvas());
         }
     }
 }

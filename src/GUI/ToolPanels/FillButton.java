@@ -7,13 +7,13 @@ import Method.Variables;
 import javax.swing.*;
 import java.awt.*;
 
-public class ColorPickerButton extends JButton {
+public class FillButton extends JButton {
     CanvasPanel canvasPanel;
 
-    public ColorPickerButton(CanvasPanel canvasPanel) {
+    public FillButton(CanvasPanel canvasPanel) {
         Variables.addToolButtons(this);
         this.canvasPanel = canvasPanel;
-        this.setText("Picker");
+        this.setText("Fill");
         this.setFocusPainted(false);
         this.setBackground(Color.WHITE);
         this.setPreferredSize(new Dimension(40, 20));

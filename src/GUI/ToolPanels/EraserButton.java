@@ -1,8 +1,7 @@
 package GUI.ToolPanels;
 
 import EventListener.ToolSelectEventListener;
-import GUI.CanvasPanels.CanvasPanel;
-import Method.Method;
+import GUI.MainPanels.CanvasPanel;
 import Method.Variables;
 
 import javax.swing.*;
@@ -10,7 +9,6 @@ import java.awt.*;
 
 public class EraserButton extends JButton {
     CanvasPanel canvasPanel;
-    Method method;
 
     public EraserButton(CanvasPanel canvasPanel) {
         Variables.addToolButtons(this);

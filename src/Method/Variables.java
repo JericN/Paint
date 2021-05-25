@@ -1,7 +1,6 @@
 package Method;
 
-import GUI.CanvasPanels.CanvasPanel;
-import GUI.ToolPanels.ColorPanel;
+import GUI.MainPanels.CanvasPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,10 +8,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Variables {
-
-
     static ArrayList<JButton> toolButtons;
     static BufferedImage colorWheel;
+    static BufferedImage canvas;
     static Color color;
     static int brushRadius;
 

@@ -1,7 +1,7 @@
 package GUI.ToolPanels;
 
 import EventListener.BrushSizeListener;
-import GUI.CanvasPanels.CanvasPanel;
+import GUI.MainPanels.CanvasPanel;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 

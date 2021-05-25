@@ -1,6 +1,6 @@
 package Method;
 
-import GUI.CanvasPanels.CanvasPanel;
+import GUI.MainPanels.CanvasPanel;
 import GUI.ToolPanels.ColorPanel;
 
 import javax.imageio.ImageIO;

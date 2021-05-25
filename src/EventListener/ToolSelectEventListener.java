@@ -1,10 +1,8 @@
 package EventListener;
 
 
-import GUI.CanvasPanels.CanvasPanel;
-import GUI.ToolPanels.ColorPickerButton;
-import GUI.ToolPanels.EraserButton;
-import GUI.ToolPanels.PaintButton;
+import GUI.MainPanels.CanvasPanel;
+import GUI.ToolPanels.*;
 import Method.*;
 import Enum.ToolType;
 
@@ -40,6 +38,9 @@ public class ToolSelectEventListener implements ActionListener {
 
         } else if (src instanceof ColorPickerButton) {
             CanvasEventListener.type = ToolType.COLOR_PICKER;
+            focus(src);
+        }else if (src instanceof FillButton) {
+            CanvasEventListener.type = ToolType.FILL;
             focus(src);
         }
     }

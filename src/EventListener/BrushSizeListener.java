@@ -1,6 +1,6 @@
 package EventListener;
 
-import GUI.CanvasPanels.CanvasPanel;
+import GUI.MainPanels.CanvasPanel;
 import Method.Method;
 
 import javax.swing.*;
