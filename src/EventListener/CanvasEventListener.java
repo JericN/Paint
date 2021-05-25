@@ -22,22 +22,28 @@ public class CanvasEventListener extends MouseAdapter implements MouseMotionList
 
     @Override
     public void mousePressed(MouseEvent e) {
-        run(e);
+        runA(e);
+        runB(e);
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        run(e);
+        runA(e);
     }
 
-    public void run(MouseEvent e) {
+
+
+    public void runA(MouseEvent e) {
         if (type == ToolType.PAINT) {
             method.setPixel(new Point(e.getX(), e.getY()));
         } else if (type == ToolType.ERASER) {
             method.removePixel(new Point(e.getX(), e.getY()));
         } else if (type == ToolType.COLOR_PICKER) {
             method.setColor(new Point(e.getX(), e.getY()), canvasPanel.getCanvas());
-        }else if (type == ToolType.FILL) {
+        }
+    }
+    public void runB(MouseEvent e){
+        if (type == ToolType.FILL) {
             method.fillArea(new Point(e.getX(), e.getY()), canvasPanel.getCanvas());
         }
     }

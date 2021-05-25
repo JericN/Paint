@@ -39,8 +39,10 @@ public class CanvasPanel extends JPanel {
         this.grabFocus();
         this.repaint();
     }
-    public void setCanvasData(BufferedImage canvas){
-        this.canvas = canvas;
+    public void setCanvasData(ArrayList<Point> posArr, Color col){
+        for(Point p : posArr){
+            canvas.setRGB(p.x,p.y,col.getRGB());
+        }
         this.grabFocus();
         this.repaint();
     }
