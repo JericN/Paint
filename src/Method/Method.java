@@ -74,7 +74,6 @@ public class Method extends ImageBuffer {
         Queue<Quad> queue = new LinkedList<>();
         Point t;
         Quad p;
-
         queue.add(new Quad(posArr.get(0).x, posArr.get(0).x, posArr.get(0).y, 1));
         queue.add(new Quad(posArr.get(0).x, posArr.get(0).x, posArr.get(0).y - 1, -1));
 
@@ -92,10 +91,13 @@ public class Method extends ImageBuffer {
                     visited.add(t);
                     x--;
                 }
+                visited.remove(visited.size()-1);
             }
+
             if (x < p.x1) {
                 queue.add(new Quad(x, p.x1 - 1, p.y - p.dy, -p.dy));
             }
+
             while (p.x1 < p.x2) {
                 while (target == canvas.getRGB(p.x1, p.y)) {
                     t = new Point(p.x1, p.y);

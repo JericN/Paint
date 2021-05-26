@@ -34,12 +34,10 @@ public class Variables {
     }
 
     public void setColor(Point pos) {
-        System.out.println("1");
         color = new Color(colorWheel.getRGB((int) pos.getX(), (int) pos.getY()));
     }
 
     public void setColor(Point pos, BufferedImage img) {
-        System.out.println("2");
         System.out.println(img.getRGB((int) pos.getX(), (int) pos.getY()));
         color = new Color(img.getRGB((int) pos.getX(), (int) pos.getY()));
     }
