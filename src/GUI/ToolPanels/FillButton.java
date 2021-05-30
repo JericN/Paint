@@ -17,6 +17,6 @@ public class FillButton extends JButton {
         this.setFocusPainted(false);
         this.setBackground(Color.WHITE);
         this.setPreferredSize(new Dimension(40, 20));
-        this.addActionListener(new ToolSelectEventListener(canvasPanel, this));
+        this.addActionListener(new ToolSelectEventListener(canvasPanel));
     }
 }

@@ -1,9 +1,11 @@
 package GUI.ToolPanels;
 
-import EventListener.BrushSizeListener;
+import EventListener.BrushEventListener;
+import EventListener.ToolSelectEventListener;
 import GUI.MainPanels.CanvasPanel;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
+import Enum.*;
 
 import javax.swing.*;
 import javax.swing.text.AbstractDocument;
@@ -12,6 +14,7 @@ import java.awt.*;
 public class BrushPanel extends JPanel {
     JTextField brushSizeField;
     CanvasPanel canvasPanel;
+    JComboBox brushType;
 
     public BrushPanel(CanvasPanel canvasPanel) {
         this.canvasPanel = canvasPanel;
@@ -31,10 +34,13 @@ public class BrushPanel extends JPanel {
         brushSizeField.setPreferredSize(new Dimension(50, 25));
         brushSizeField.setHorizontalAlignment(SwingConstants.CENTER);
         AbstractDocument document = (AbstractDocument) brushSizeField.getDocument();
-        document.setDocumentFilter(new BrushSizeListener(canvasPanel, brushSizeField));
-        brushSizeField.addFocusListener(new BrushSizeListener(canvasPanel, brushSizeField));
-
+        document.setDocumentFilter(new BrushEventListener(canvasPanel, brushSizeField));
+        brushSizeField.addFocusListener(new BrushEventListener(canvasPanel, brushSizeField));
         this.add(brushSizeField);
+
+        brushType = new JComboBox(new BrushStroke[]{BrushStroke.SLASH, BrushStroke.CIRCLE, BrushStroke.SQUARE});
+        brushType.addActionListener(new ToolSelectEventListener(canvasPanel));
+        this.add(brushType);
     }
 
 }

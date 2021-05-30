@@ -4,7 +4,7 @@ package EventListener;
 import GUI.MainPanels.CanvasPanel;
 import GUI.ToolPanels.*;
 import Method.*;
-import Enum.ToolType;
+import Enum.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,11 +17,9 @@ public class ToolSelectEventListener implements ActionListener {
     JButton tool;
     ArrayList<JButton> toolArr;
 
-    public ToolSelectEventListener(CanvasPanel canvasPanel, JButton tool) {
+    public ToolSelectEventListener(CanvasPanel canvasPanel) {
         this.method = new Method(canvasPanel);
-        this.tool = tool;
         toolArr = method.getToolButtons();
-
     }
 
     @Override
@@ -30,7 +28,6 @@ public class ToolSelectEventListener implements ActionListener {
         Object src = e.getSource();
         if (src instanceof PaintButton) {
             CanvasEventListener.type = ToolType.PAINT;
-
             focus(src);
         } else if (src instanceof EraserButton) {
             CanvasEventListener.type = ToolType.ERASER;
@@ -42,6 +39,9 @@ public class ToolSelectEventListener implements ActionListener {
         }else if (src instanceof FillButton) {
             CanvasEventListener.type = ToolType.FILL;
             focus(src);
+        }else if(src instanceof JComboBox){
+            BrushStroke bs = (BrushStroke)((JComboBox<?>) src).getSelectedItem();
+            Method.setBrushStroke(bs);
         }
     }
 

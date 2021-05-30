@@ -31,14 +31,14 @@ public class CanvasPanel extends JPanel {
         return canvas;
     }
 
-    public void setCanvasData(Point pos, Color col, int rad) {
-        Graphics2D g2D = canvas.createGraphics();
-        g2D.setColor(col);
-        Shape theCircle = new Ellipse2D.Double(pos.x - rad, pos.y - rad, 2.0 * rad, 2.0 * rad);
-        g2D.fill(theCircle);
-        this.grabFocus();
-        this.repaint();
-    }
+//    public void setCanvasData(Point pos, Color col, int rad) {
+//        Graphics2D g2D = canvas.createGraphics();
+//        g2D.setColor(col);
+//        Shape theCircle = new Ellipse2D.Double(pos.x - rad, pos.y - rad, 2.0 * rad, 2.0 * rad);
+//        g2D.fill(theCircle);
+//        this.grabFocus();
+//        this.repaint();
+//    }
     public void setCanvasData(ArrayList<Point> posArr, Color col){
         for(Point p : posArr){
             canvas.setRGB(p.x,p.y,col.getRGB());

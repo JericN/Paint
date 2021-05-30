@@ -10,11 +10,11 @@ import javax.swing.text.DocumentFilter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class BrushSizeListener extends DocumentFilter implements FocusListener {
+public class BrushEventListener extends DocumentFilter implements FocusListener {
     Method method;
     JTextField textField;
 
-    public BrushSizeListener(CanvasPanel canvasPanel, JTextField textField) {
+    public BrushEventListener(CanvasPanel canvasPanel, JTextField textField) {
         method = new Method(canvasPanel);
         this.textField = textField;
     }

@@ -1,7 +1,7 @@
 package Method;
 
 import GUI.MainPanels.CanvasPanel;
-import Enum.Quad;
+import Enum.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,60 +17,41 @@ public class Method extends ImageBuffer {
     }
 
     public void setPixel(Point pos) {
-        canvasPanel.setCanvasData(pos, color, brushRadius);
+        ArrayList<Point> base = dataStrokes.get(currentStroke);
+        ArrayList<Point> temp = new ArrayList<>();
+        for (Point point : base) {
+            int x = point.x + pos.x;
+            int y = point.y + pos.y;
+            temp.add(new Point(x,y));
+        }
+        canvasPanel.setCanvasData(temp, currentColor);
     }
 
     public void removePixel(Point pos) {
-        canvasPanel.setCanvasData(pos, Color.WHITE, brushRadius);
+        ArrayList<Point> base = dataStrokes.get(BrushStroke.SQUARE);
+        ArrayList<Point> temp = new ArrayList<>();
+        for (Point point : base) {
+            int x = point.x + pos.x;
+            int y = point.y + pos.y;
+            temp.add(new Point(x,y));
+        }
+        canvasPanel.setCanvasData(temp, Color.WHITE);
+    }
+
+    public static void setBrushStroke(BrushStroke type) {
+        currentStroke = type;
     }
 
     public void fillArea(Point pos, BufferedImage canvas) {
         ArrayList<Point> posArr = new ArrayList<>();
         ArrayList<Point> visited = new ArrayList<>();
         posArr.add(new Point(pos.x, pos.y));
-        getPosArrB(posArr, visited, canvas, canvas.getRGB(pos.x, pos.y));
-        canvasPanel.setCanvasData(posArr, color);
+        getArea(posArr, visited, canvas, canvas.getRGB(pos.x, pos.y));
+        canvasPanel.setCanvasData(posArr, currentColor);
     }
 
-//    public void getPosArr(ArrayList<Point> posArr, ArrayList<Point> visited, BufferedImage canvas, int target) {
-//        Queue<Point> queue = new LinkedList<>();
-//        Point curr;
-//        queue.add(posArr.get(0));
-//        while (!queue.isEmpty()) {
-//            if (visited.contains(queue.peek())) {
-//                queue.remove();
-//                continue;
-//            }
-//            int x = queue.peek().x;
-//            int y = queue.peek().y;
-//            queue.remove();
-//            int lx = x;
-//            while (target == canvas.getRGB(lx, y)) {
-//                curr = new Point(lx, y);
-//                posArr.add(curr);
-//                visited.add(curr);
-//                lx--;
-//            }
-//            while (target == canvas.getRGB(x, y)) {
-//                curr = new Point(x, y);
-//                posArr.add(curr);
-//                visited.add(curr);
-//                x++;
-//            }
-//            for (int rx = lx; rx < x; rx++) {
-//                if (target == canvas.getRGB(rx, y)) {
-//                    queue.add(new Point(rx, y + 1));
-//                }
-//            }
-//            for (int rx = lx; rx < x; rx++) {
-//                if (target == canvas.getRGB(rx, y)) {
-//                    queue.add(new Point(rx, y - 1));
-//                }
-//            }
-//        }
-//    }
 
-    public void getPosArrB(ArrayList<Point> posArr, ArrayList<Point> visited, BufferedImage canvas, int target) {
+    public void getArea(ArrayList<Point> posArr, ArrayList<Point> visited, BufferedImage canvas, int target) {
         Queue<Quad> queue = new LinkedList<>();
         Point t;
         Quad p;
@@ -91,7 +72,7 @@ public class Method extends ImageBuffer {
                     visited.add(t);
                     x--;
                 }
-                visited.remove(visited.size()-1);
+                visited.remove(visited.size() - 1);
             }
 
             if (x < p.x1) {
