@@ -1,2 +1,2 @@
 # Paint
-Clone of Microsoft Paint
+Clone of Microsoft Paint.
